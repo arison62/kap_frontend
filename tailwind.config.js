@@ -4,7 +4,7 @@ const { fontFamily } = require("tailwindcss/defaultTheme")
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
-  content: ["src/**/*.{ts,tsx}", "components/**/*.{ts,tsx}", "./index.html"],
+  content: ["./src/**/*.{ts,tsx}", "./src/components/**/*.{ts,tsx}", "./index.html"],
   theme: {
     container: {
       center: true,
@@ -14,6 +14,12 @@ export default {
       },
     },
     extend: {
+      screens : {
+        'wide': "1440px"
+      },
+      space : {
+        'wide': "1440px"
+      },
       colors: {
         licorice : "#221620ff",
         atomicTangerine : "#FE944Fff",

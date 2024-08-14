@@ -82,4 +82,11 @@
       @apply bg-background text-foreground;
       font-feature-settings: "rlig" 1, "calt" 1;
     }
+    
+  }
+
+  @layer components {
+     .max-container {
+       @apply max-w-screen-wide mx-auto w-full border-2 max-wide:px-5;
+     }
   }

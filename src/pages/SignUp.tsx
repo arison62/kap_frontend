@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler, FieldValues } from "react-hook-form";
 import BannerImg from "../assets/banner.png";
 import pathAsset from "../assets/Vector 1.svg";
@@ -7,6 +7,9 @@ import { Label } from "../components/label";
 import { Input } from "../components/input";
 import { Button } from "../components/button";
 import { SERVER_URL } from "../lib/constants";
+import { useToast } from "../components/use-toast";
+
+import { useUser } from "../hooks/UserContext";
 
 const SignUp = () => {
   const {
@@ -15,9 +18,40 @@ const SignUp = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  console.log(SERVER_URL);
+  const { toast } = useToast();
+  const { updateUser } = useUser();
+  const navigate = useNavigate();
+
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
+    const formData = new FormData();
+    Object.entries(data).forEach((value) => {
+      formData.append(value[0], value[1]);
+    });
+
+    fetch(`${SERVER_URL}/user/auth/signup`, {
+      method: "POST",
+      body: formData,
+    }).then(async (res) => {
+      if (res.ok) {
+        const data = await res.json();
+        updateUser(data.data);
+        toast({
+          description: "Compte creer avec success",
+          title: "Success",
+          variant: "success",
+        });
+
+        navigate("/");
+      } else {
+        const data = await res.json();
+
+        toast({
+          description: data.message,
+          title: "Error",
+          variant: "destructive",
+        });
+      }
+    });
   };
   return (
     <div className="grid md:grid-cols-2 h-screen">
@@ -41,7 +75,6 @@ const SignUp = () => {
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-5 mt-8"
-            onChange={() => console.log(errors)}
           >
             <div>
               <Label htmlFor="email" className="text-licorice font-bold">

@@ -5,7 +5,10 @@ import logoImg from "../assets/logo_sm.png";
 import { Label } from "../components/label";
 import { Input } from "../components/input";
 import { Button } from "../components/button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useToast } from "../components/use-toast";
+import { useUser } from "../hooks/UserContext";
+import { SERVER_URL } from "../lib/constants";
 
 const SignIn = () => {
   const {
@@ -14,8 +17,40 @@ const SignIn = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
+  const { toast } = useToast();
+  const { updateUser } = useUser();
+  const navigate = useNavigate();
+
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
+    const formData = new FormData();
+    Object.entries(data).forEach((value) => {
+      formData.append(value[0], value[1]);
+    });
+
+    fetch(`${SERVER_URL}/user/auth/signin`, {
+      method: "POST",
+      body: formData,
+    }).then(async (res) => {
+      if (res.ok) {
+        const data = await res.json();
+        updateUser(data.data);
+        toast({
+          description: "Connexion reussie",
+          title: "Success",
+          variant: "success",
+        });
+
+        navigate("/");
+      } else {
+        const data = await res.json();
+
+        toast({
+          description: data.message,
+          title: "Error",
+          variant: "destructive",
+        });
+      }
+    });
   };
   return (
     <div className="grid md:grid-cols-2 h-screen">
@@ -80,7 +115,7 @@ const SignIn = () => {
                    hover:bg-atomicTangerine/80"
               disabled={isSubmitting}
             >
-              Creer un compte
+              Se connecter
             </Button>
             <p className="text-licorice/60 text-center mt-8 relative">
               Vous n'avez pas un compte ?{" "}

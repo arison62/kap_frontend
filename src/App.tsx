@@ -4,6 +4,8 @@ import SignIn from "./pages/SignIn";
 import PrivateRoute from "./pages/PrivateRoute";
 import Dashboard from "./pages/Dashboard";
 import { UserProvider } from "./hooks/UserContext";
+import { Toaster } from "./components/toaster";
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      <Toaster />
     </UserProvider>
   );
 }

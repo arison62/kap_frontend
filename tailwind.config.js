@@ -66,7 +66,8 @@ export default {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
-        asap : ["Asap", 'sans-serif']
+        montserrat : ["Montserrat", 'sans-serif'],
+        palanquin : ["Palanquin", 'sans-serif'],
       },
       keyframes: {
         "accordion-down": {

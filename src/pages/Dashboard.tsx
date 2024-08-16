@@ -10,12 +10,13 @@ import {
   LogOut,
 } from "lucide-react";
 import { useUser } from "../hooks/UserContext";
+import Header from "../components/Header";
 
 const Dashboard = () => {
   const { updateUser } = useUser();
   return (
     <div className="w-full h-full flex">
-      <div className="flex flex-col px-5 bg-atomicTangerine/10 py-12">
+      <div className="flex flex-col px-5 bg-atomicTangerine/10 py-8">
         <h1 className="flex items-baseline">
           <img src={logoImg} alt="logo img" width={32} />
           <span className="text-2xl font-montserrat font-semibold text-licorice">
@@ -130,8 +131,8 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div>
-        <div></div>
+      <div className="w-full px-5">
+        <Header className="pt-8"/>
         <div>
           <Outlet />
         </div>

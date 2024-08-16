@@ -7,7 +7,7 @@ type UserType = {
 };
 type UserContextType = {
   user: UserType | null;
-  updateUser: (user: UserType) => void;
+  updateUser: (user: UserType | null) => void;
 };
 
 const UserContext = createContext<UserContextType | null>(null);
@@ -15,8 +15,13 @@ const UserContext = createContext<UserContextType | null>(null);
 const UserProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<UserType | null>(null);
 
-  const updateUser = ({ email, token }: UserType) => {
-    setUser({ email, token });
+ 
+  const updateUser = (user: UserType | null) => {
+    if (user) {
+      setUser({ email: user.email, token: user.token });
+    } else {
+      setUser(null);
+    }
   };
   const value = { user, updateUser };
 

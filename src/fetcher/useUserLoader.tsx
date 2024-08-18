@@ -65,15 +65,14 @@ export const useUserLoader = () => {
           data: new FormData(),
         });
 
-        console.log("Data value");
         if (response.ok) {
           const userData = (await response.json())?.data;
 
-          dispatch({ type: "name", payload: userData?.name ?? "" });
+          dispatch({ type: "name", payload: userData?.nom ?? "" });
           dispatch({ type: "email", payload: userData?.email ?? "" });
-          dispatch({ type: "firstName", payload: userData?.nom ?? "" });
+          dispatch({ type: "firstName", payload: userData?.prenom ?? "" });
           dispatch({ type: "adresse", payload: userData?.adresse ?? "" });
-          dispatch({ type: "phone", payload: userData?.phone ?? "" });
+          dispatch({ type: "phone", payload: userData?.telephone ?? "" });
         } else {
           const responseData = await response.json();
           setError(responseData.message);

@@ -11,7 +11,9 @@ import Invoices from "./pages/dashboard/Invoices";
 import Wallet from "./pages/dashboard/Wallet";
 import Settings from "./pages/dashboard/Settings";
 
+
 function App() {
+ 
   return (
     <UserProvider>
       <BrowserRouter>

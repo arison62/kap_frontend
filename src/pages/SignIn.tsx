@@ -72,7 +72,6 @@ const SignIn = () => {
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col gap-5 mt-8"
-            onChange={() => console.log(errors)}
           >
             <div>
               <Label htmlFor="email" className="text-licorice font-bold">

@@ -132,10 +132,8 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="w-full px-5">
-        <Header className="pt-8"/>
-        <div>
-          <Outlet />
-        </div>
+        <Header className="pt-8" />
+        <Outlet />
       </div>
     </div>
   );

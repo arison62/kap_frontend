@@ -1,7 +1,10 @@
+import CustomerForm from "../../components/CustomerForm"
 
 const Invoices = () => {
   return (
-    <div>Invoices</div>
+    <div>
+      <CustomerForm />
+    </div>
   )
 }
 

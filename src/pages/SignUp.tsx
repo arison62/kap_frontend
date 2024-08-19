@@ -74,7 +74,7 @@ const SignUp = () => {
           </p>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col gap-5 mt-8"
+            className="flex flex-col gap-8 mt-8"
           >
             <div>
               <Label htmlFor="email" className="text-licorice font-bold">

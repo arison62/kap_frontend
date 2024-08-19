@@ -15,12 +15,11 @@ const Settings = () => {
   const { toast } = useToast();
   const { user } = useUser();
 
-  console.log(data)
   const onSubmit = () => {
     if (formRef.current) {
       const data = new FormData(formRef.current);
       if (isEditable) {
-        console.log(data);
+        
         if (data.get("password") == data.get("passwordConfirm")) {
           myFetch("user/update", {
             method: "POST",
@@ -94,7 +93,7 @@ const Settings = () => {
   };
 
   return (
-    <div className="pt-12">
+    <div className="pt-8">
       <div className="flex flex-col space-y-2 text-licorice lg:w-full lg:max-w-2xl">
         <h3 className="text-2xl font-bold">Information du compte</h3>
         <p className="text-slate-500">Mettre a jour les information du compte</p>

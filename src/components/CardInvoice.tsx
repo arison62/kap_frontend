@@ -39,7 +39,7 @@ const CardInvoice = ({
             <span className="font-semibold text-licorice text-xl">
               {userData.name}
             </span>
-            <span>{userData.email} "</span>
+            <span>{userData.email} </span>
           </div>
         </CardDescription>
       </CardHeader>

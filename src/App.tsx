@@ -10,6 +10,7 @@ import Transactions from "./pages/dashboard/Transactions";
 import Invoices from "./pages/dashboard/Invoices";
 import Wallet from "./pages/dashboard/Wallet";
 import Settings from "./pages/dashboard/Settings";
+import CreateCustomer from "./pages/dashboard/CreateCustomer";
 
 
 function App() {
@@ -27,6 +28,8 @@ function App() {
               <Route path="invoices" element={<Invoices />} />
               <Route path="wallet" element={<Wallet />} />
               <Route path="settings" element={<Settings />} />
+              <Route path="customer/create" element={<CreateCustomer />} />
+              
             </Route>
           </Route>
         </Routes>

@@ -1,10 +1,16 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
-const { fontFamily } = require("tailwindcss/defaultTheme")
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 /** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
-  content: ["./src/**/*.{ts,tsx}", "./src/components/**/*.{ts,tsx}", "./index.html"],
+  content: [
+    "./src/**/*.{ts,tsx}",
+    "./src/components/**/*.{ts,tsx}",
+    "./index.html",
+    "./node_modules/tailwind-datepicker-react/dist/**/*.js",
+  ],
+
   theme: {
     container: {
       center: true,
@@ -14,16 +20,16 @@ export default {
       },
     },
     extend: {
-      screens : {
-        'wide': "1440px"
+      screens: {
+        wide: "1440px",
       },
-      space : {
-        'wide': "1440px"
+      space: {
+        wide: "1440px",
       },
       colors: {
-        licorice : "#221620ff",
-        atomicTangerine : "#FE944Fff",
-        wine : "#7C353Dff",
+        licorice: "#221620ff",
+        atomicTangerine: "#FE944Fff",
+        wine: "#7C353Dff",
         coralPink: "#FC9F9Bff",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -66,8 +72,8 @@ export default {
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
-        montserrat : ["Montserrat", 'sans-serif'],
-        palanquin : ["Palanquin", 'sans-serif'],
+        montserrat: ["Montserrat", "sans-serif"],
+        palanquin: ["Palanquin", "sans-serif"],
       },
       keyframes: {
         "accordion-down": {
@@ -87,4 +93,4 @@ export default {
   },
   // eslint-disable-next-line @typescript-eslint/no-var-requires, no-undef
   plugins: [require("tailwindcss-animate")],
-}
+};

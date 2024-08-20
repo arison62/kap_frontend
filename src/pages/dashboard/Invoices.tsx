@@ -1,9 +1,10 @@
-import CustomerForm from "../../components/CustomerForm"
+
+import InvoicesForm from "../../components/InvoicesForm"
 
 const Invoices = () => {
   return (
     <div>
-      <CustomerForm />
+      <InvoicesForm />
     </div>
   )
 }
